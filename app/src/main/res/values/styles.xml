@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Other style attributes -->
+
+        <!-- Add or update this line to set the colorPrimary attribute -->
+        <item name="colorPrimary">#3498db</item>
+    </style>
+</resources>
