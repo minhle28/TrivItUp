@@ -20,6 +20,8 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,11 +31,68 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 public class AuthenticationActivity extends AppCompatActivity {
     private TextView textView;
     private GoogleSignInClient client;
+    private FirebaseAuth auth;
+    private EditText signupEmail,signupPassword;
+    private Button signupButton;
+    private TextView loginRedirectText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authentication);
+
+        //Manual Sign Up
+        auth = FirebaseAuth.getInstance();
+        signupEmail = findViewById(R.id.signup_email);
+        signupPassword = findViewById(R.id.signup_password);
+        signupButton = findViewById(R.id.signup_button);
+        loginRedirectText = findViewById(R.id.loginRedirectText);
+
+        signupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String user = signupEmail.getText().toString().trim();
+                String pass = signupPassword.getText().toString().trim();
+
+                if (user.isEmpty()){
+                    signupEmail.setError("Email cannot be empty");
+                }
+                if (pass.isEmpty()){
+                    signupPassword.setError("Password cannot be empty");
+                }else{
+                    auth.createUserWithEmailAndPassword(user,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(AuthenticationActivity.this, "SignUp successful",Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(AuthenticationActivity.this, LoginActivity.class));
+                            } else {
+                                Toast.makeText(AuthenticationActivity.this, "SignUp Failed" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                        }}
+                    });
+                }
+            }
+        });
+
+          loginRedirectText.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
+                  startActivity(new Intent(AuthenticationActivity.this, LoginActivity.class));
+              }
+          });
+
+
+
+
+
+
+
+
+
+
+
+
+        //Google Sign Up
         textView = findViewById(R.id.signInWithGoogle);
         GoogleSignInOptions options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 //This is an error, but DO NOT CHANGE default_web_client_id
