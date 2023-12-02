@@ -2,14 +2,24 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true">
         <shape>
-            <solid android:color="#3498db" />
-            <corners android:radius="8dp" />
+            <corners android:radius="10dp" />
+
+            <gradient
+                android:angle="45"
+                android:startColor="#1D130C"
+                android:endColor="#3B58BF"
+                android:type="linear" />
         </shape>
     </item>
     <item>
         <shape>
-            <solid android:color="#2196F3" />
-            <corners android:radius="8dp" />
+            <corners android:radius="10dp" />
+
+            <gradient
+                android:angle="45"
+                android:startColor="#25180E"
+                android:endColor="#3B58BF"
+                android:type="linear" />
         </shape>
     </item>
 </selector>

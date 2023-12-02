@@ -42,24 +42,24 @@
         <!-- Buttons will be added here -->
     </LinearLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/playIndividuallyButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#3498db"
+        android:background="@drawable/button_woody"
         android:text="Play Individually"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/navigationBar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_cat" />
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/logoutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:background="#3498db"
+        android:background="@drawable/button_woody"
         android:text="Logout"
         android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,39 +70,39 @@
         android:layout_width="0dp"
         android:layout_height="52dp"
         android:layout_margin="0dp"
-        android:background="#3498db"
+        android:background="@drawable/button_woody"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/settingsButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#3498db"
+            android:background="@drawable/button_woody"
             android:text="Settings"
             android:textColor="#ffffff"
             android:textSize="12sp"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/leaderboardButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#3498db"
+            android:background="@drawable/button_woody"
             android:foreground="?android:attr/selectableItemBackground"
             android:text="Leaderboard"
             android:textColor="#ffffff"
             android:textSize="12sp"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/aboutButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#3498db"
+            android:background="@drawable/button_woody"
             android:text="About"
             android:textColor="#ffffff"
             android:textSize="12sp"/>
