@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
             if (email != null && !email.isEmpty()) {
                 System.out.println(email);
-                welcomeTextView.setText("Welcome, " + email + "!");
+                welcomeTextView.setText("Welcome, " + displayName + "!");
             } else {
                 welcomeTextView.setText("Welcome, User!");
             }

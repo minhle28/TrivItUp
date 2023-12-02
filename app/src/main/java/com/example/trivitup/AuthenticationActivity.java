@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthCredential;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,7 +33,7 @@ public class AuthenticationActivity extends AppCompatActivity {
     private TextView textView;
     private GoogleSignInClient client;
     private FirebaseAuth auth;
-    private EditText signupEmail,signupPassword;
+    private EditText signupEmail, signupPassword;
     private Button signupButton;
     private TextView loginRedirectText;
 
@@ -54,49 +55,58 @@ public class AuthenticationActivity extends AppCompatActivity {
                 String user = signupEmail.getText().toString().trim();
                 String pass = signupPassword.getText().toString().trim();
 
-                if (user.isEmpty()){
+                if (user.isEmpty()) {
                     signupEmail.setError("Email cannot be empty");
                 }
-                if (pass.isEmpty()){
+                if (pass.isEmpty()) {
                     signupPassword.setError("Password cannot be empty");
-                }else{
-                    auth.createUserWithEmailAndPassword(user,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                } else {
+                    auth.createUserWithEmailAndPassword(user, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()){
-                                Toast.makeText(AuthenticationActivity.this, "SignUp successful",Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(AuthenticationActivity.this, LoginActivity.class));
+                            if (task.isSuccessful()) {
+                                String name = user.split("@")[0];
+
+                                FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                        .setDisplayName(name)
+                                        .build();
+
+                                firebaseUser.updateProfile(profileUpdates)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Toast.makeText(AuthenticationActivity.this, "SignUp successful", Toast.LENGTH_SHORT).show();
+                                                    startActivity(new Intent(AuthenticationActivity.this, LoginActivity.class));
+                                                } else {
+                                                    Toast.makeText(AuthenticationActivity.this, "Failed to set display name", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
                             } else {
-                                Toast.makeText(AuthenticationActivity.this, "SignUp Failed" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                        }}
+                                Toast.makeText(AuthenticationActivity.this, "SignUp Failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
                     });
+
                 }
             }
         });
 
-          loginRedirectText.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View view) {
-                  startActivity(new Intent(AuthenticationActivity.this, LoginActivity.class));
-              }
-          });
-
-
-
-
-
-
-
-
-
-
+        loginRedirectText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AuthenticationActivity.this, LoginActivity.class));
+            }
+        });
 
 
         //Google Sign Up
         textView = findViewById(R.id.signInWithGoogle);
         GoogleSignInOptions options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 //This is an error, but DO NOT CHANGE default_web_client_id
-                //.requestIdToken(getString(R.string.default_web_client_id))
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         client = GoogleSignIn.getClient(this, options);
