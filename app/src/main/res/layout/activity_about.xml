@@ -26,49 +26,56 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1. TrivitUp is similar to the Trivia game, which answers the question to get a point."
             android:layout_marginBottom="12dp"
-            android:textColor="?attr/colorOnSecondary"/>
+            android:text="1. TrivitUp is similar to a Trivia game, in which you answer questions to get points."
+            android:textColor="?attr/colorOnSecondary" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="2. There are 4 categories, in each category have 5 sub-categories."
             android:layout_marginBottom="12dp"
-            android:textColor="?attr/colorOnSecondary"/>
+            android:text="2. There are 4 main categories, within each category there are 5 sub-categories."
+            android:textColor="?attr/colorOnSecondary" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="3. Choose the category and sub that you want to answer the question."
             android:layout_marginBottom="12dp"
-            android:textColor="?attr/colorOnSecondary"/>
+            android:text="3. Choose the category and sub-category that you want to answer the question."
+            android:textColor="?attr/colorOnSecondary" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="4. There are 3 questions."
             android:layout_marginBottom="12dp"
-            android:textColor="?attr/colorOnSecondary"/>
+            android:text="4. There are 3 questions per quiz."
+            android:textColor="?attr/colorOnSecondary" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="5. Answer all correct 3 questions, and you will receive 10 points, less than 3 will receive 0 points."
             android:layout_marginBottom="12dp"
-            android:textColor="?attr/colorOnSecondary"/>
+            android:text="5. Answer all 3 questions correct and you will receive 10 points, less than 3 will earn you 0 points."
+            android:textColor="?attr/colorOnSecondary" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="6. For each question, just have 30 second, you need to answer in time remaining."
             android:layout_marginBottom="12dp"
-            android:textColor="?attr/colorOnSecondary"/>
+            android:text="6. You have 30 seconds to answer all 3 question, you need to answer before the time runs out."
+            android:textColor="?attr/colorOnSecondary" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="7. In rank, you got the highest points will place on the top."
-            android:textColor="?attr/colorOnSecondary"/>
+            android:layout_marginBottom="12dp"
+            android:text="7. If you do not answer all the questions before the timer runs out you will not receive any points"
+            android:textColor="?attr/colorOnSecondary" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="8. In rank, receiving the highest points will place you on the top."
+            android:textColor="?attr/colorOnSecondary" />
     </LinearLayout>
 </RelativeLayout>
