@@ -33,7 +33,7 @@ public class AuthenticationActivity extends AppCompatActivity {
     private TextView textView;
     private GoogleSignInClient client;
     private FirebaseAuth auth;
-    private EditText signupEmail, signupPassword;
+    private EditText signupEmail, signupPassword,signupName;
     private Button signupButton;
     private TextView loginRedirectText;
 
@@ -46,12 +46,14 @@ public class AuthenticationActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         signupEmail = findViewById(R.id.signup_email);
         signupPassword = findViewById(R.id.signup_password);
+        signupName = findViewById(R.id.signup_name);
         signupButton = findViewById(R.id.signup_button);
         loginRedirectText = findViewById(R.id.loginRedirectText);
 
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String name = signupName.getText().toString().trim();
                 String user = signupEmail.getText().toString().trim();
                 String pass = signupPassword.getText().toString().trim();
 
@@ -65,7 +67,7 @@ public class AuthenticationActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                String name = user.split("@")[0];
+//                                String name = user.split("@")[0];
 
                                 FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                                 UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
