@@ -85,7 +85,8 @@ public class MainActivity extends AppCompatActivity {
             Button button = new Button(this);
             button.setText(category);
             button.setId(View.generateViewId());
-            button.setBackground(getDrawable(R.drawable.radio_button_background));
+            button.setTextColor(getColor(R.color.white));
+            button.setBackground(getDrawable(R.drawable.button_shadow));
 
             // Set margins to create spacing between buttons
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
