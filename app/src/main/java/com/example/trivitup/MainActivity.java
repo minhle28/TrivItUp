@@ -45,12 +45,23 @@ public class MainActivity extends AppCompatActivity {
 
         if (user != null) {
             String displayName = user.getDisplayName();
+            String email = user.getEmail();
 
-            if (displayName != null && !displayName.isEmpty()) {
-                welcomeTextView.setText("Welcome, " + displayName + "!");
+            if (email != null && !email.isEmpty()) {
+                System.out.println(email);
+                welcomeTextView.setText("Welcome, " + email + "!");
             } else {
                 welcomeTextView.setText("Welcome, User!");
             }
+//            if (displayName != null && !displayName.isEmpty()) {
+//                welcomeTextView.setText("Welcome, " + displayName + "!");
+//            } else {
+//                if (email != null && !email.isEmpty()) {
+//                    welcomeTextView.setText("Welcome, " + email + "!");
+//                } else {
+//                    welcomeTextView.setText("Welcome, User!");
+//                }
+//            }
         }
 
         // Set up MediaPlayer
