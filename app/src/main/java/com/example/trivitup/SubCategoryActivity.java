@@ -29,8 +29,8 @@ public class SubCategoryActivity extends AppCompatActivity {
         binding = ActivitySubCategoryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         ArrayList<CategoryModel> categories = new ArrayList<>();
-        categories.add(new CategoryModel("","Maths",""));
-        categories.add(new CategoryModel("","Science",""));
+        categories.add(new CategoryModel("","Algebra",""));
+        categories.add(new CategoryModel("","Trigonometry",""));
         categories.add(new CategoryModel("","History",""));
         categories.add(new CategoryModel("","Language",""));
         categories.add(new CategoryModel("","General Knowledge",""));

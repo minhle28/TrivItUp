@@ -48,6 +48,9 @@ dependencies {
     implementation("com.google.firebase:firebase-auth:22.0.0")
     implementation ("com.google.android.gms:play-services-auth:20.2.0")
     implementation ("com.google.firebase:firebase-database:20.2.0")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+
 
 
     // TODO: Add the dependencies for Firebase products you want to use
