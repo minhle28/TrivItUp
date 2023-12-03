@@ -15,58 +15,19 @@
         android:textColor="#ffffff"
         android:textSize="16sp" />
 
-    <LinearLayout
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/titleTextView"
-        android:background="#ecf0f1"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="match_parent"
+        tools:context=".Leaderboards">
 
-        <!-- Titles -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="8dp">
-
-            <TextView
-                android:layout_width="102dp"
-                android:layout_height="wrap_content"
-                android:importantForAccessibility="yes"
-                android:text="Rank"
-                android:textColor="#2c3e50"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:importantForAccessibility="yes"
-                android:text="Name"
-                android:textColor="#2c3e50"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:importantForAccessibility="yes"
-                android:text="Points"
-                android:textColor="#2c3e50"
-                android:textSize="18sp" />
-        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:clipToPadding="false"
-            android:divider="@android:color/darker_gray"
-            android:dividerHeight="1dp"
-            android:scrollbars="vertical" />
-    </LinearLayout>
+            tools:listitem="@layout/row_leaderboards"/>
+    </FrameLayout>
 
 </RelativeLayout>

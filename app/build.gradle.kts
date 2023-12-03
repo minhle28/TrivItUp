@@ -16,7 +16,7 @@ android {
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
-
+        multiDexEnabled = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -46,6 +46,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
     implementation("com.google.android.gms:play-services-auth:20.2.0")
     implementation("com.google.firebase:firebase-auth:22.0.0")
+    implementation("com.google.firebase:firebase-firestore:24.9.1")
     implementation ("com.google.android.gms:play-services-auth:20.2.0")
     implementation ("com.google.firebase:firebase-database:20.2.0")
     implementation ("com.github.bumptech.glide:glide:4.16.0")

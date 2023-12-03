@@ -3,58 +3,65 @@ package com.example.trivitup;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Question implements Parcelable {
-    private String questionText;
-    private String[] options;
-    private int correctOptionIndex;
+public class Question  {
+    private String question, option1, option2, option3, option4, answer;
 
-    public Question(String questionText, String[] options, int correctOptionIndex) {
-        this.questionText = questionText;
-        this.options = options;
-        this.correctOptionIndex = correctOptionIndex;
+    public Question(){}
+
+    public Question(String question, String option1, String option2, String option3, String option4, String answer) {
+        this.question = question;
+        this.option1 = option1;
+        this.option2 = option2;
+        this.option3 = option3;
+        this.option4 = option4;
+        this.answer = answer;
     }
 
-    public String getQuestionText() {
-        return questionText;
+    public String getQuestion() {
+        return question;
     }
 
-    public String[] getOptions() {
-        return options;
+    public void setQuestion(String question) {
+        this.question = question;
     }
 
-    public int getCorrectOptionIndex() {
-        return correctOptionIndex;
+    public String getOption1() {
+        return option1;
     }
 
-    // Parcelable implementation
-
-    protected Question(Parcel in) {
-        questionText = in.readString();
-        options = in.createStringArray();
-        correctOptionIndex = in.readInt();
+    public void setOption1(String option1) {
+        this.option1 = option1;
     }
 
-    public static final Creator<Question> CREATOR = new Creator<Question>() {
-        @Override
-        public Question createFromParcel(Parcel in) {
-            return new Question(in);
-        }
-
-        @Override
-        public Question[] newArray(int size) {
-            return new Question[size];
-        }
-    };
-
-    @Override
-    public int describeContents() {
-        return 0;
+    public String getOption2() {
+        return option2;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(questionText);
-        dest.writeStringArray(options);
-        dest.writeInt(correctOptionIndex);
+    public void setOption2(String option2) {
+        this.option2 = option2;
+    }
+
+    public String getOption3() {
+        return option3;
+    }
+
+    public void setOption3(String option3) {
+        this.option3 = option3;
+    }
+
+    public String getOption4() {
+        return option4;
+    }
+
+    public void setOption4(String option4) {
+        this.option4 = option4;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 }
