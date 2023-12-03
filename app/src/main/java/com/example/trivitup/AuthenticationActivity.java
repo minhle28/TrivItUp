@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.trivitup.databinding.ActivityAuthenticationBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -27,6 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class AuthenticationActivity extends AppCompatActivity {
@@ -36,14 +38,19 @@ public class AuthenticationActivity extends AppCompatActivity {
     private EditText signupEmail, signupPassword,signupName;
     private Button signupButton;
     private TextView loginRedirectText;
+    FirebaseFirestore database;
+    ActivityAuthenticationBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_authentication);
+
+        binding = ActivityAuthenticationBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         //Manual Sign Up
         auth = FirebaseAuth.getInstance();
+        database = FirebaseFirestore.getInstance();
         signupEmail = findViewById(R.id.signup_email);
         signupPassword = findViewById(R.id.signup_password);
         signupName = findViewById(R.id.signup_name);
@@ -57,6 +64,9 @@ public class AuthenticationActivity extends AppCompatActivity {
                 String user = signupEmail.getText().toString().trim();
                 String pass = signupPassword.getText().toString().trim();
 
+                User user1 = new User(name,user,pass);
+
+
                 if (user.isEmpty()) {
                     signupEmail.setError("Email cannot be empty");
                 }
@@ -68,7 +78,23 @@ public class AuthenticationActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
 //                                String name = user.split("@")[0];
+                                String uid = task.getResult().getUser().getUid();
+                                database
+                                        .collection("users")
+                                        .document(uid)
+                                        .set(user1).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
 
+                                                    Toast.makeText(AuthenticationActivity.this, "SignUp successful", Toast.LENGTH_SHORT).show();
+                                                    startActivity(new Intent(AuthenticationActivity.this, LoginActivity.class));
+                                                    finish();
+                                                } else {
+                                                    Toast.makeText(AuthenticationActivity.this, "Failed to set display name", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
                                 FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                                 UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                         .setDisplayName(name)
@@ -79,6 +105,7 @@ public class AuthenticationActivity extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
+
                                                     Toast.makeText(AuthenticationActivity.this, "SignUp successful", Toast.LENGTH_SHORT).show();
                                                     startActivity(new Intent(AuthenticationActivity.this, LoginActivity.class));
                                                 } else {
