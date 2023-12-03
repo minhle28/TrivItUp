@@ -2,6 +2,7 @@ package com.example.trivitup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -26,6 +27,7 @@ public class QuestionActivity extends AppCompatActivity {
     Question question;
     CountDownTimer timer ;
     FirebaseFirestore database;
+    int correctAnswers = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,6 +127,7 @@ public class QuestionActivity extends AppCompatActivity {
     void checkAnswer(TextView textView){
         String selectedAnswer = textView.getText().toString();
         if(selectedAnswer.equals(question.getAnswer())){
+            correctAnswers++;
             textView.setBackground(getResources().getDrawable(R.drawable.option_right));
         }else{
             showAnswer();
@@ -142,10 +145,14 @@ public class QuestionActivity extends AppCompatActivity {
 
         if (viewId == R.id.nextBtn) {
             reset();
-            if(index<questions.size()){
+            if(index<=questions.size()){
                 index++;
                 setNextQuestion();
             }else{
+                Intent intent = new Intent(QuestionActivity.this,ResultActivity.class);
+                intent.putExtra("correct",correctAnswers);
+                intent.putExtra("total",questions.size());
+                startActivity(intent);
                 Toast.makeText(this,"Quiz Finished",Toast.LENGTH_SHORT).show();
             }
         } else if (viewId == R.id.option_1 || viewId == R.id.option_2 || viewId == R.id.option_3 || viewId == R.id.option_4) {
