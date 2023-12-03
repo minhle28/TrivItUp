@@ -1,6 +1,7 @@
 package com.example.trivitup;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,12 +9,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.example.trivitup.databinding.ActivityMainBinding;
+import com.example.trivitup.databinding.ActivitySubCategoryBinding;
+
 import java.util.*;
 import java.util.HashMap;
 import java.util.Map;
 
 public class SubCategoryActivity extends AppCompatActivity {
     // Define the subcategories
+    ActivitySubCategoryBinding binding;
     Map<String, String[]> subCategories;
 
     @Override
@@ -21,46 +26,18 @@ public class SubCategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub_category);
 
-        // Get the layout
-        LinearLayout layout = findViewById(R.id.button_subcat);
+        binding = ActivitySubCategoryBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        ArrayList<CategoryModel> categories = new ArrayList<>();
+        categories.add(new CategoryModel("","Maths",""));
+        categories.add(new CategoryModel("","Science",""));
+        categories.add(new CategoryModel("","History",""));
+        categories.add(new CategoryModel("","Language",""));
+        categories.add(new CategoryModel("","General Knowledge",""));
+        CategoryAdapter adapter = new CategoryAdapter(this,categories);
 
-        // Initialize and populate the subcategories
-        subCategories = new HashMap<>();
-        subCategories.put("Math", new String[]{"Algebra", "Calculus", "Geometry", "Statistics", "Trigonometry"});
-        subCategories.put("Science", new String[]{"Physics", "Chemistry", "Biology", "Astronomy", "Geology"});
-        subCategories.put("General Knowledge", new String[]{"History", "Geography", "Art", "Literature", "Sports"});
-        subCategories.put("Random", new String[]{"Movies", "Music", "Pop Culture", "Technology", "Food"});
-
-        // Get the category from the intent
-        String category = getIntent().getStringExtra("CATEGORY");
-
-        // Get the subcategories for this category
-        String[] subCategoriesForCategory = subCategories.get(category);
-
-        for (String subCategory : subCategoriesForCategory) {
-            Button button = new Button(this);
-            button.setText(subCategory);
-
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-            );
-
-            layoutParams.setMargins(0, 0, 0, 16);
-
-            button.setLayoutParams(layoutParams);
-
-            button.setTextColor(getResources().getColor(android.R.color.white));
-
-            button.setBackgroundResource(R.drawable.button_style);
-
-            button.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    startQuiz(subCategory);
-                }
-            });
-            layout.addView(button);
-        }
+        binding.categoryList.setLayoutManager(new GridLayoutManager(this,2));
+        binding.categoryList.setAdapter(adapter);
 
 
     }

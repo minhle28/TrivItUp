@@ -53,15 +53,6 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 welcomeTextView.setText("Welcome, User!");
             }
-//            if (displayName != null && !displayName.isEmpty()) {
-//                welcomeTextView.setText("Welcome, " + displayName + "!");
-//            } else {
-//                if (email != null && !email.isEmpty()) {
-//                    welcomeTextView.setText("Welcome, " + email + "!");
-//                } else {
-//                    welcomeTextView.setText("Welcome, User!");
-//                }
-//            }
         }
 
         // Set up MediaPlayer
