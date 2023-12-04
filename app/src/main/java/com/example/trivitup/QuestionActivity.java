@@ -97,6 +97,11 @@ public class QuestionActivity extends AppCompatActivity {
         };
     }
 
+    public void quit(View view){
+        Intent intent = new Intent(QuestionActivity.this,MainActivity.class);
+        startActivity(intent);
+    }
+
     private void showTimeUpDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Time's Up!");

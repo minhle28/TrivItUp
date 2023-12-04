@@ -3,6 +3,7 @@ package com.example.trivitup;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ public class ResultActivity extends AppCompatActivity {
     ActivityResultBinding binding;
     FirebaseFirestore database;
     long POINTS = 10;
+    MediaPlayer player2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,11 +31,38 @@ public class ResultActivity extends AppCompatActivity {
         binding.score.setText(String.format("%d/%d",correctAnswers,totalQuestions));
         binding.pointsEarned.setText(String.valueOf(points));
 
+        if (player2 == null){
+            player2 = MediaPlayer.create(this, R.raw.complete);
+            player2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    stopPlayer();
+                }
+            });
+        }
+        player2.start();
+
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         database.collection("users")
                 .document(FirebaseAuth.getInstance().getUid())
                 .update("points", FieldValue.increment(points));
 
+    }
+
+    public void stop(View v){
+        stopPlayer();
+    }
+    public void stopPlayer(){
+        if (player2 == null) {
+            player2.release();
+            player2 = null;
+            Toast.makeText(this,"MediaPlayer released", Toast.LENGTH_SHORT);
+        }
+    }
+    @Override
+    protected void onStop(){
+        super.onStop();
+        stopPlayer();
     }
 
     public void onClick(View view){
@@ -44,4 +73,5 @@ public class ResultActivity extends AppCompatActivity {
             startActivity(intent);}
 
         }
+
 }
