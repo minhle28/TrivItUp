@@ -81,7 +81,7 @@ public class QuestionActivity extends AppCompatActivity {
 
     }
     void resetTimer(){
-        timer = new CountDownTimer(30000,1000) {
+        timer = new CountDownTimer(15000,1000) {
             @Override
             public void onTick(long l) {
                 binding.timer.setText(String.valueOf(l/1000));
