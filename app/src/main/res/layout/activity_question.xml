@@ -156,6 +156,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/button_woody"
+        android:onClick="quit"
         android:text="Quit"
         android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/nextBtn"
