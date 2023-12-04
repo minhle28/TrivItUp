@@ -14,6 +14,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+
 
 import org.w3c.dom.Text;
 
@@ -80,19 +83,35 @@ public class QuestionActivity extends AppCompatActivity {
         resetTimer();
 
     }
-    void resetTimer(){
-        timer = new CountDownTimer(15000,1000) {
+    void resetTimer() {
+        timer = new CountDownTimer(15000, 1000) {
             @Override
             public void onTick(long l) {
-                binding.timer.setText(String.valueOf(l/1000));
+                binding.timer.setText(String.valueOf(l / 1000));
             }
 
             @Override
             public void onFinish() {
-
+                showTimeUpDialog();
             }
         };
     }
+
+    private void showTimeUpDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Time's Up!");
+        builder.setMessage("Your time is up. Do you want to quit?");
+        builder.setPositiveButton("Quit", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+
+        builder.setCancelable(false);
+        builder.show();
+    }
+
     void showAnswer(){
         if(question.getAnswer().equals(binding.option1.getText().toString())){
             binding.option1.setBackground(getResources().getDrawable(R.drawable.option_right));
