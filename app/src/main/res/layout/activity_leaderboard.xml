@@ -1,25 +1,28 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="#3498db"
-        android:elevation="4dp"
-        android:gravity="center"
-        android:padding="16dp"
-        android:text="Leaderboard"
-        android:textColor="#ffffff"
-        android:textSize="16sp" />
+<!--    <TextView-->
+<!--        android:id="@+id/titleTextView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:background="#3498db"-->
+<!--        android:elevation="4dp"-->
+<!--        android:gravity="center"-->
+<!--        android:padding="16dp"-->
+<!--        android:text="Leaderboard"-->
+<!--        android:textColor="#ffffff"-->
+<!--        android:textSize="16sp" />-->
 
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
+
+
         tools:context=".Leaderboards">
 
 
@@ -27,7 +30,7 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/row_leaderboards"/>
+            tools:listitem="@layout/row_leaderboards" />
     </FrameLayout>
 
 </RelativeLayout>

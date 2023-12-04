@@ -1,55 +1,52 @@
 package com.example.trivitup;
 
-import androidx.annotation.NonNull;
-
-import java.util.List;
-
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.trivitup.databinding.RowLeaderboardsBinding;
 
-public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.ViewHolder> {
+import java.util.ArrayList;
 
-    private List<LeaderboardEntry> leaderboardEntries;
+public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.LeaderboardViewHolder>{
 
-    public LeaderboardAdapter(List<LeaderboardEntry> leaderboardEntries) {
-        this.leaderboardEntries = leaderboardEntries;
+    Context context;
+    ArrayList<User> users;
+    public LeaderboardAdapter(Context context, ArrayList<User> users){
+        this.context = context;
+        this.users = users;
     }
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView rankTextView;
-        public TextView nameTextView;
-        public TextView pointsTextView;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            rankTextView = itemView.findViewById(R.id.rankTextView);
-            nameTextView = itemView.findViewById(R.id.nameTextView);
-            pointsTextView = itemView.findViewById(R.id.pointsTextView);
-        }
-    }
-
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.leaderboard_item, parent, false);
-        return new ViewHolder(itemView);
+    public LeaderboardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.row_leaderboards,parent,false);
+        return new LeaderboardViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        LeaderboardEntry entry = leaderboardEntries.get(position);
-        holder.rankTextView.setText(String.valueOf(position + 1));
-        holder.nameTextView.setText(entry.getDisplayName());
-        holder.pointsTextView.setText(String.valueOf(entry.getPoints()));
+    public void onBindViewHolder(@NonNull LeaderboardViewHolder holder, int position) {
+        User user = users.get(position);
+        holder.binding.name.setText(user.getName());
+        holder.binding.points.setText(String.valueOf(user.getPoints()));
+        holder.binding.index.setText(String.format("#%d",position+1));
     }
 
     @Override
     public int getItemCount() {
-        return leaderboardEntries.size();
+        return users.size();
+    }
+
+    public class LeaderboardViewHolder extends RecyclerView.ViewHolder{
+        RowLeaderboardsBinding binding;
+
+        public LeaderboardViewHolder(@NonNull View itemView) {
+            super(itemView);
+            binding = RowLeaderboardsBinding.bind(itemView);
+
+        }
     }
 }

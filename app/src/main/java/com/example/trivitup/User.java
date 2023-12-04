@@ -5,12 +5,25 @@ public class User {
         this.name = name;
         this.email = email;
         this.pass = pass;
+
     }
 
     public User() {
     }
 
-    private String name, email, pass;
+    private String name;
+    private String email;
+    private String pass;
+
+    public long getPoints() {
+        return points;
+    }
+
+    public void setPoints(long points) {
+        this.points = points;
+    }
+
+    private long points;
     public String getName() {
         return name;
     }

@@ -63,6 +63,7 @@ public class AuthenticationActivity extends AppCompatActivity {
                 String name = signupName.getText().toString().trim();
                 String user = signupEmail.getText().toString().trim();
                 String pass = signupPassword.getText().toString().trim();
+                Long points = 0L;
 
                 User user1 = new User(name,user,pass);
 
