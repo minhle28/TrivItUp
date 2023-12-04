@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
             button.setText(category);
             button.setId(View.generateViewId());
             button.setTextColor(getColor(R.color.white));
+            button.setTextSize(20);
             button.setBackground(getDrawable(R.drawable.button_shadow));
 
             // Set margins to create spacing between buttons

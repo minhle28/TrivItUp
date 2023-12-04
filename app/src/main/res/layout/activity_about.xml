@@ -34,6 +34,14 @@
             android:layout_gravity="center">
 
             <!-- Set android:layout_below="@id/titleTextView" for the first TextView -->
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_gravity="center"
+                android:src="@drawable/trivitup" />
+
             <TextView
                 android:id="@+id/textView1"
                 style="@style/MyTextViewStyle"
@@ -41,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:background="@drawable/button_style"
-                android:text="1. TrivitUp is similar to a Trivia game, in which you answer questions to get points." />
+                android:text="1. JungleTrivia is a next level interactive Trivia game." />
 
             <TextView
                 style="@style/MyTextViewStyle"
@@ -49,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:background="@drawable/button_style"
-                android:text="2. There are 4 main categories, within each category there are 5 sub-categories." />
+                android:text="2. There are 4 main categories, within each category there are several sub-categories." />
 
             <TextView
                 style="@style/MyTextViewStyle"
@@ -65,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:background="@drawable/button_style"
-                android:text="4. There are 3 questions per quiz." />
+                android:text="4. There are 5 questions per quiz." />
 
             <TextView
                 style="@style/MyTextViewStyle"
@@ -73,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:background="@drawable/button_style"
-                android:text="5. Answer all 3 questions correct and you will receive 10 points, less than 3 will earn you 0 points." />
+                android:text="5. For each correct answer, you can earn 10 points." />
 
             <TextView
                 style="@style/MyTextViewStyle"
@@ -81,15 +89,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:background="@drawable/button_style"
-                android:text="6. You have 30 seconds to answer all 3 question, you need to answer before the time runs out." />
+                android:text="6. Make sure you answer the question within 15 seconds" />
 
-            <TextView
-                style="@style/MyTextViewStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/button_style"
-                android:text="7. If you do not answer all the questions before the timer runs out you will not receive any points" />
 
             <TextView
                 style="@style/MyTextViewStyle"

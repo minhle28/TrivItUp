@@ -9,24 +9,24 @@ import android.util.AttributeSet;
 import android.view.View;
 
 
-public class ScrollingBgView extends View {
+public class ScrollingBgView2 extends View {
     private Bitmap bitmap;
     private Paint paint;
     private float offset;
 
-    public ScrollingBgView(Context context) {
+    public ScrollingBgView2(Context context) {
         super(context);
         init();
     }
 
-    public ScrollingBgView(Context context, AttributeSet attrs) {
+    public ScrollingBgView2(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
     private void init() {
         // Load the background image from the drawable resources
-        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.scrollable2);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.scrollable);
 
         // Create a Paint object for drawing the bitmap
         paint = new Paint();

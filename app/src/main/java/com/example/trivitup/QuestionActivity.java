@@ -145,7 +145,7 @@ public class QuestionActivity extends AppCompatActivity {
 
         if (viewId == R.id.nextBtn) {
             reset();
-            if(index<=questions.size()){
+            if(index<questions.size()){
                 index++;
                 setNextQuestion();
             }else{
