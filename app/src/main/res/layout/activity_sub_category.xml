@@ -8,14 +8,20 @@
     android:layout_height="match_parent"
     tools:context=".SubCategoryActivity">
 
+    <com.example.trivitup.ScrollingBgView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent" />
     <TextView
         android:id="@+id/textViewSubcategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
         android:text="Please select a subcategory!"
-        android:textColor="?attr/colorOnSecondary"
-        android:textSize="16sp"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:fontFamily="@font/roboto_bold"
+        android:background="@drawable/option_unselected"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
