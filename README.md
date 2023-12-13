@@ -4,18 +4,18 @@
 ## About 
 * A captivating Android trivia game designed to engage users in an interactive learning experience. Players can enrich their knowledge with intriguing facts presented in the form of engaging trivia questions. Challenge friends, earn trophies, and unlock exciting features and new categories to enhance the gaming experience.
 
-## Note
+## 📝 Note
 * Only available on Android.
 
 
-## App Screenshots
+## 🌲 App Screenshots
 ![7](https://github.com/minhle28/TrivItUp/assets/114270231/7aa081a3-e284-421b-9233-8f61ca8bb3a2)
 
 ![8](https://github.com/minhle28/TrivItUp/assets/114270231/6b1c18e2-1d42-4d65-a6ca-4a128f0654d8)
 
 
 
-## Available Features
+## ⭐ Available Features
 * Manual Login/Sign-up and Google Authentication
 * Fetch data for the Leaderboard and Question screen
 * Save score to Firestore database
